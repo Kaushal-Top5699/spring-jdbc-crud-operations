@@ -2,8 +2,8 @@ package com.kaushal;
 
 public class Student {
     private String name;
-    private int rollNo;
-    private int marks;
+    private String rollNo;
+    private String marks;
 
     public String getName() {
         return name;
@@ -13,19 +13,19 @@ public class Student {
         this.name = name;
     }
 
-    public int getRollNo() {
+    public String getRollNo() {
         return rollNo;
     }
 
-    public void setRollNo(int rollNo) {
+    public void setRollNo(String rollNo) {
         this.rollNo = rollNo;
     }
 
-    public int getMarks() {
+    public String getMarks() {
         return marks;
     }
 
-    public void setMarks(int marks) {
+    public void setMarks(String marks) {
         this.marks = marks;
     }
 

@@ -3,6 +3,9 @@ package com.kaushal;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,15 +45,28 @@ public class Main {
 
         // DELETE OPERATION START //
 
-        int id = 4;
-        String deleteQuery = "DELETE FROM student WHERE id=?";
-        int count = template.update(deleteQuery, id);
-        if (count > 0) {
-            System.out.println("Delete Success.");
-        } else {
-            System.out.println("Delete Fail.");
-        }
+//        int id = 4;
+//        String deleteQuery = "DELETE FROM student WHERE id=?";
+//        int count = template.update(deleteQuery, id);
+//        if (count > 0) {
+//            System.out.println("Delete Success.");
+//        } else {
+//            System.out.println("Delete Fail.");
+//        }
 
         // DELETE OPERATION END //
+
+        // SELECT OPERATIONS START //
+        // Select All
+        String selectQuery = "SELECT * FROM student";
+        List<Student> students = template.query(selectQuery, new StudentRowMapper());
+        for (int i = 0; i < students.size(); i++) {
+            System.out.println("Name: " + students.get(i).getName());
+            System.out.println("RollNo: " + students.get(i).getRollNo());
+            System.out.println("Marks: " + students.get(i).getMarks());
+            System.out.println();
+        }
+
+        // SELECT OPERATIONS END //
     }
 }
