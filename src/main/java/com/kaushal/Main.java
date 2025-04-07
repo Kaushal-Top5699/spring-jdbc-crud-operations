@@ -58,14 +58,25 @@ public class Main {
 
         // SELECT OPERATIONS START //
         // Select All
-        String selectQuery = "SELECT * FROM student";
-        List<Student> students = template.query(selectQuery, new StudentRowMapper());
-        for (int i = 0; i < students.size(); i++) {
-            System.out.println("Name: " + students.get(i).getName());
-            System.out.println("RollNo: " + students.get(i).getRollNo());
-            System.out.println("Marks: " + students.get(i).getMarks());
-            System.out.println();
-        }
+//        String selectQuery = "SELECT * FROM student";
+//        List<Student> students = template.query(selectQuery, new StudentRowMapper());
+//        for (int i = 0; i < students.size(); i++) {
+//            System.out.println("Name: " + students.get(i).getName());
+//            System.out.println("RollNo: " + students.get(i).getRollNo());
+//            System.out.println("Marks: " + students.get(i).getMarks());
+//            System.out.println();
+//        }
+
+        // SELECT OPERATIONS END //
+
+        // SELECT OPERATIONS START //
+        // Select One
+        String selectQuery = "SELECT * FROM student WHERE id=?";
+        int id = 1;
+        Student students = template.queryForObject(selectQuery, new StudentRowMapper(), id);
+        System.out.println("Name: " + students.getName());
+        System.out.println("RollNo: " + students.getRollNo());
+        System.out.println("Marks: " + students.getMarks());
 
         // SELECT OPERATIONS END //
     }
